@@ -28,6 +28,7 @@
 
 ### AC-6: Abmelden beendet Sitzung, geschützte Seiten leiten um
 - [x] Logout ist Server Action (POST) mit `signOut()` + `redirect("/login")` — Beleg: `src/app/(auth)/actions.ts`; Umleitung geschützter Seiten live bestätigt (siehe AC-7)
+- [x] Abmelden im Browser: nach Klick auf „Abmelden" landet der Nutzer auf `/login` und bleibt ausgeloggt — verifiziert vom Nutzer im Browser, 2026-08-27 (nach Fix von BUG-1)
 
 ### AC-7: Nicht eingeloggt → geschützte Seite leitet zum Login
 - [x] Live geprüft: `GET /` → 307 `Location: /login`, `GET /profile` → 307 `Location: /login`; öffentliche Seiten `/login`, `/datenschutz` → 200 — Beleg: HTTP-Probe gegen laufende App; `src/proxy.ts`
@@ -117,7 +118,7 @@ Im automatisierten QA-Lauf: keine. Im anschließenden **menschlichen Smoke-Test*
 - **Fix:** Footer-Name ist jetzt ein Link auf `/` (auf jeder Seite) — live bestätigt: `/datenschutz` rendert `href="/"` um „ActivitySlot", der alte `<span>` ist weg — `src/components/app-footer.tsx`.
 - **Status:** behoben und live verifiziert.
 
-_AC-6 wird nach dem Logout-Fix mit dem nächsten menschlichen Smoke-Test final grün gesetzt._
+_AC-6 nach dem Logout-Fix vom Nutzer im Browser bestätigt (2026-08-27) → grün._
 
 ## Zusammenfassung
 - **Acceptance Criteria:** 17/17 in der prüfbaren Ebene (Logik/Sicherheit/Rendering) bestätigt; 10 davon haben zusätzlich einen End-to-End-Anteil (Browser/Postfach), der hier NOT VERIFIED ist
@@ -125,6 +126,7 @@ _AC-6 wird nach dem Logout-Fix mit dem nächsten menschlichen Smoke-Test final g
 - **Bugs:** 0 (0 critical, 0 high, 0 medium, 0 low)
 - **Security:** 8/8 Checks verifiziert, 0 NOT VERIFIED — RLS, Autorisierung, Routenschutz, Throttle, keine Enumeration, keine Secrets im Bundle, POST-Formulare, keine sensiblen Felder
 - **Regression:** 23/23 Unit-/Integrationstests grün (`npm test`)
-- **Production Ready:** JA für den verifizierten Umfang (keine Critical/High-Bugs) — die Browser-/Postfach-Journeys brauchen noch einen menschlichen Smoke-Test oder `/e2e-tests`
+- **Production Ready:** JA — keine offenen Bugs. Die beiden im Smoke-Test gefundenen Bugs (BUG-1 Logout, BUG-2 Rückweg) sind behoben und bestätigt. Der Kern-Journey (Registrierung → Bestätigung → Login → Profil/Logout) wurde vom Nutzer im Browser durchlaufen.
+- **Verbleibend offen (kein Blocker):** responsives Layout / Cross-Browser und der abgelaufene-Link-Fall (EC-2) — für dauerhafte Absicherung `/e2e-tests`
 
 > „Production Ready: JA" heißt: keine Critical/High-Bugs. Die oben unter „NICHT verifiziert" gelisteten Browser-/E-Mail-Abläufe sind damit nicht abgedeckt.
