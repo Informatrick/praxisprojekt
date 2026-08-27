@@ -26,7 +26,7 @@
 
 | Dienst | Verarbeitet | Region | AVV/DPA unterzeichnet | Außerhalb der Angemessenheitsländer? |
 |--------|-------------|--------|-----------------------|--------------------------------------|
-| Supabase (Supabase Inc., US-Unternehmen) | Konten, Profile, alle App-Daten | eu-central-1 (Frankfurt) | ☐ offen — DPA im Supabase-Dashboard akzeptieren | Daten liegen in der EU; EU ist auf der Schweizer Angemessenheitsliste (Anhang 1 DSV) |
+| Supabase (Supabase Inc., US-Unternehmen) | Konten, Profile, alle App-Daten | eu-central-1 (Frankfurt) | ☑ gilt automatisch — der DPA ist in die Terms of Service integriert („all organizations get its protections automatically, no separate signed DPA is needed"; Dashboard geprüft 2026-08-27) | Daten liegen in der EU; EU ist auf der Schweizer Angemessenheitsliste (Anhang 1 DSV) |
 | OpenWeather Ltd (UK-Unternehmen, Forecast-API) | nur Standort-Koordinaten pro Forecast-Abfrage, keine Nutzerkennung | UK | ☐ offen — im Free Tier gibt es üblicherweise keinen AVV; Risiko gering, da keine identifizierenden Daten übermittelt werden (siehe Offene Punkte) | UK hat einen EU-Angemessenheitsbeschluss (Art. 45 DSGVO) und steht auf der Schweizer Angemessenheitsliste (Anhang 1 DSV) — Export nach UK muss in der Datenschutzerklärung genannt werden (Art. 19 Abs. 4 DSG) |
 
 ## Betroffenenrechte
@@ -41,7 +41,7 @@
 
 ## Offene Punkte
 
-- [ ] Supabase-DPA im Dashboard des Dev-Projekts akzeptieren (Settings → Legal/Compliance)
+- [x] Supabase-DPA — erledigt ohne eigenes Zutun: laut Dashboard (geprüft 2026-08-27) ist der DPA Teil der Terms of Service und gilt automatisch; ein separates Akzeptieren existiert nicht
 - [ ] Datenschutzerklärung um OpenWeather Ltd ergänzen: Empfänger, Zweck (Wettervorhersage), übermittelte Daten (nur Koordinaten), Exportland UK (Art. 13 DSGVO; Art. 19 Abs. 4 DSG) — als AC in PROJ-3 vorgesehen
 - [ ] Text der Datenschutzerklärung erstellen (Generator oder Anwalt), sobald die Seite gebaut wird (PROJ-1)
 - [ ] Bei Wiederaufnahme eines öffentlichen Betriebs: Impressumspflicht (DDG) prüfen — aktuell kein Deployment geplant
