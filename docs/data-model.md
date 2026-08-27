@@ -12,6 +12,7 @@
 |---------|-------------------|----------------------------|
 | profiles | Das Benutzerkonto mit Anzeigename und Standard-Standort (Wohnort) | dem Nutzer selbst — niemand sonst |
 | activities | Eine Aktivität mit ihren Wetterbedingungen (Temperatur min/max, Niederschlag, Wind max), Zeitfenster, Wochentagen und optional eigenem Standort | dem Nutzer, dem sie gehört |
+| login_throttle | Interner Zähler für den Login-Missbrauchsschutz (Fehlversuche pro E-Mail, kurzlebig — bedeutungslos nach 15 Minuten) | niemandem sichtbar — nur die Server-Logik (PROJ-1) |
 
 ## Beziehungen
 

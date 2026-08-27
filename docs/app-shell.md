@@ -35,17 +35,17 @@ Owner: **PROJ-2 (Aktivitäten & Bedingungen)** — das erste Feature, das einen 
 
 ## Auth-Zustände
 
-- **Abgemeldet:** nur Login und Registrierung erreichbar (PROJ-1); der Header zeigt keine Navigation.
+- **Abgemeldet:** nur Login, Registrierung, Passwort-Reset und die Datenschutzerklärung erreichbar (PROJ-1); der Header zeigt keine Navigation.
 - **Angemeldet:** volle Navigation; nach dem Login landet man auf „Vorschläge".
 - **Rollen:** keine — alle angemeldeten Nutzer sehen dasselbe.
 
 ## Shell-Komponenten
 
-_Wird von `/architecture` gefüllt, sobald PROJ-2 entworfen ist._
-
 | Komponente | Datei | Zweck |
 |------------|-------|-------|
-| — | — | — |
+| AppHeader | `src/components/app-header.tsx` | Logo/App-Name + Konto-Menü; **erstellt von PROJ-1** (ohne Nav-Links), Navigationslinks ergänzt PROJ-2 als Shell-Owner |
+| AppFooter | `src/components/app-footer.tsx` | Footer mit Link „Datenschutz" auf jeder Seite (auch ausgeloggt); erstellt von PROJ-1 |
+| LocationSearch | `src/components/location-search.tsx` | Orts-Suchfeld (tippen → Vorschläge → Auswahl); erstellt von PROJ-1, wiederverwendet von PROJ-2 |
 
 ---
 
