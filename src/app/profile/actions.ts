@@ -87,6 +87,18 @@ export async function getExportData(): Promise<
     return { error: "Export fehlgeschlagen. Bitte versuche es erneut." };
   }
 
+  // AC-13 (PROJ-2): Aktivitäten des Nutzers in den Export aufnehmen.
+  const { data: activities, error: activitiesError } = await supabase
+    .from("activities")
+    .select(
+      "name, temp_min, temp_max, no_rain, wind_max, time_from, time_to, weekdays, location_name, location_lat, location_lon, created_at, updated_at"
+    )
+    .eq("user_id", user.id)
+    .order("created_at", { ascending: false });
+  if (activitiesError) {
+    return { error: "Export fehlgeschlagen. Bitte versuche es erneut." };
+  }
+
   return {
     data: {
       exportiert_am: new Date().toISOString(),
@@ -104,7 +116,7 @@ export async function getExportData(): Promise<
         angelegt_am: profile.created_at,
         geaendert_am: profile.updated_at,
       },
-      // PROJ-2 ergänzt hier die Aktivitäten, sobald es sie gibt.
+      aktivitaeten: activities ?? [],
     },
   };
 }
