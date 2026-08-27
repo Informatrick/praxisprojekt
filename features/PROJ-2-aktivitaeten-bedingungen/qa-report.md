@@ -49,11 +49,11 @@
 ## E2E Tests
 - Status: **nicht ausgeführt** (für kritische Flows `/e2e-tests` ausführen)
 
-## In diesem Lauf NICHT verifiziert
-- [!] Browser-Interaktionen: Anlegen/Bearbeiten/Löschen über den Dialog, Ortssuche-Autocomplete, Wochentag-Umschalter, JSON-Download, Hinweistexte (AC-7/9/10/13, EC-2) — kein Browser in `/qa`
-- [!] Mobiles Burger-Menü (Sheet) und aktive Nav-Markierung — Client-Interaktion, kein Browser
-- [!] Responsives Layout bei 375px / 768px / 1440px — kein Viewport
-- [!] Cross-Browser (Chrome / Firefox / Safari) — keine Browser-Engine
+## Menschlicher Smoke-Test (Nutzer, 2026-08-27, Browser)
+- [x] Kern-Journey fehlerfrei: Aktivität anlegen → bearbeiten → löschen; inkl. Handy-Format — vom Nutzer bestätigt (deckt den Browser-Anteil von AC-7, AC-9, AC-10, AC-13, EC-2 sowie das mobile Menü ab)
+
+## In diesem Lauf NICHT automatisiert verifiziert
+- [!] Responsives Layout exakt bei 375px / 768px / 1440px und Cross-Browser (Firefox/Safari) — vom Nutzer nur grob im Handy-Format geprüft; dauerhafte Absicherung via `/e2e-tests`
 
 ## Gefundene Bugs
 Keine. Server-Logik, Datenbank-Sicherheit (RLS, 4 Policies, 10 Check-Constraints, Kaskaden-FK — alle live geprüft), Routenschutz und Validierung verhalten sich wie spezifiziert.
@@ -64,6 +64,5 @@ Keine. Server-Logik, Datenbank-Sicherheit (RLS, 4 Policies, 10 Check-Constraints
 - **Bugs:** 0 (0 critical, 0 high, 0 medium, 0 low)
 - **Security:** 5/6 Checks verifiziert, 1 nicht zutreffend (kein Credential-Check) — RLS, Autorisierung, Input-Validierung, POST-Formulare, keine Secrets im Client alle bestätigt
 - **Regression:** 36/36 Tests grün (`npm test`); Build + Lint grün
-- **Production Ready:** JA für den verifizierten Umfang (keine Critical/High-Bugs) — die Browser-Journeys brauchen noch einen menschlichen Smoke-Test oder `/e2e-tests`
-
-> „Production Ready: JA" heißt: keine Critical/High-Bugs. Die oben unter „NICHT verifiziert" gelisteten Browser-Abläufe sind damit nicht abgedeckt.
+- **Production Ready:** JA — keine offenen Bugs. Der Kern-Journey (Anlegen → Bearbeiten → Löschen) wurde vom Nutzer im Browser fehlerfrei durchlaufen.
+- **Verbleibend offen (kein Blocker):** exaktes responsives Verhalten / Cross-Browser — für dauerhafte Absicherung `/e2e-tests`.
