@@ -1,4 +1,4 @@
-export const metadata = { title: "Datenschutzerklärung — WetterSlot" };
+﻿export const metadata = { title: "Datenschutzerklärung — ActivitySlot" };
 
 // Datenschutzerklärung (AC-17): von jeder Seite über den Footer erreichbar,
 // auch ausgeloggt. Inhalte gemäß docs/privacy.md; der endgültige Text gehört

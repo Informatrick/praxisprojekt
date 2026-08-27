@@ -1,11 +1,11 @@
-import { createClient } from "@/lib/supabase/server";
+﻿import { createClient } from "@/lib/supabase/server";
 import {
   DangerZone,
   ExportSection,
   ProfileForm,
 } from "@/components/profile-form";
 
-export const metadata = { title: "Profil — WetterSlot" };
+export const metadata = { title: "Profil — ActivitySlot" };
 
 export default async function ProfilePage() {
   const supabase = await createClient();

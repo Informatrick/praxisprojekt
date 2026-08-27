@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useActionState, useEffect, useState, useTransition } from "react";
 import { Download, Trash2, TriangleAlert } from "lucide-react";
@@ -123,7 +123,7 @@ export function ExportSection() {
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = "wetterslot-datenexport.json";
+      a.download = "activityslot-datenexport.json";
       a.click();
       URL.revokeObjectURL(url);
       toast.success("Dein Datenexport wurde heruntergeladen.");

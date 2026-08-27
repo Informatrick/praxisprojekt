@@ -1,8 +1,8 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { CloudSun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export const metadata = { title: "Vorschläge — WetterSlot" };
+export const metadata = { title: "Vorschläge — ActivitySlot" };
 
 // Startseite = Bereich „Vorschläge" (docs/app-shell.md). PROJ-3 baut hier die
 // Slot-Vorschläge; bis dahin ein ehrlicher Platzhalter mit dem nächsten Schritt.

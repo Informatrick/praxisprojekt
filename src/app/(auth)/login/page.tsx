@@ -1,6 +1,6 @@
-import { LoginForm } from "./login-form";
+﻿import { LoginForm } from "./login-form";
 
-export const metadata = { title: "Anmelden — WetterSlot" };
+export const metadata = { title: "Anmelden — ActivitySlot" };
 
 export default async function LoginPage({
   searchParams,

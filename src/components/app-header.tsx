@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { CloudSun } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { AccountMenu } from "@/components/account-menu";
@@ -30,7 +30,7 @@ export async function AppHeader() {
           className="flex items-center gap-2 rounded-md text-lg font-semibold text-foreground transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-ring"
         >
           <CloudSun className="size-6 text-primary" aria-hidden />
-          WetterSlot
+          ActivitySlot
         </Link>
         <AccountMenu
           email={user.email ?? ""}
