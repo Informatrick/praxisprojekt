@@ -21,7 +21,7 @@
 
 ## Bewusst nicht gespeichert
 
-- **Wetterdaten und Slot-Vorschläge:** werden bei Bedarf live von OpenWeatherMap geholt und berechnet, nicht in der Datenbank abgelegt. Ob ein kurzlebiger Zwischenspeicher sinnvoll ist, entscheidet die Architektur von PROJ-3.
+- **Wetterdaten und Slot-Vorschläge:** werden bei Bedarf live von OpenWeatherMap geholt und berechnet, nicht in der Datenbank abgelegt. Entschieden in PROJ-3: ein kurzlebiger serverseitiger Zwischenspeicher (30 Minuten, nur nach Koordinaten geschlüsselt, ohne Nutzerbezug) — Details in `features/PROJ-3-slot-vorschlaege/design.md`.
 - **Benachrichtigungen (PROJ-4)** erweitern das Modell später um ihre eigenen Daten.
 
 ## Diagramm

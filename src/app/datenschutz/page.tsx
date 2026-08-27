@@ -36,6 +36,14 @@ export default function DatenschutzPage() {
               Konto vor automatischem Durchprobieren zu schützen (berechtigtes
               Interesse, Art. 6 Abs. 1 lit. f DSGVO).
             </li>
+            <li>
+              <strong>Wettervorhersage und Ortssuche:</strong> für die
+              Slot-Vorschläge und die Ortssuche senden wir ausschließlich
+              Standort-Koordinaten (auf ca. 1 km gerundet) bzw. deinen
+              Ort-Suchbegriff an OpenWeather Ltd — nie deinen Namen, deine
+              E-Mail-Adresse oder eine Nutzerkennung (Vertragserfüllung,
+              Art. 6 Abs. 1 lit. b DSGVO).
+            </li>
           </ul>
         </section>
 
@@ -44,7 +52,15 @@ export default function DatenschutzPage() {
           <p>
             Die Daten liegen bei unserem Auftragsverarbeiter Supabase
             (Datenbank und Login-Dienst) in der EU, Region Frankfurt am Main.
-            Eine Bekanntgabe in Staaten außerhalb der EU findet nicht statt.
+          </p>
+          <p>
+            Für Wettervorhersage und Ortssuche erhält OpenWeather Ltd
+            (London, Vereinigtes Königreich) die oben genannten Koordinaten
+            bzw. Suchbegriffe. Exportland ist damit das Vereinigte Königreich;
+            für das UK bestehen ein Angemessenheitsbeschluss der EU
+            (Art. 45 DSGVO) und ein Eintrag auf der Angemessenheitsliste des
+            Schweizer Bundesrats. Weitere Bekanntgaben in Staaten außerhalb
+            der EU finden nicht statt.
           </p>
         </section>
 

@@ -24,7 +24,7 @@
 |----|---------|-------------|--------|------|---------|
 | PROJ-1 | Benutzerkonten & Login | Registrierung, Login und Profil mit Standard-Standort; etabliert das Muster, dass jeder Nutzer nur seine eigenen Daten sieht (Row Level Security). | Approved | [PROJ-1](PROJ-1-user-accounts-login/) | 2026-08-27 |
 | PROJ-2 | Aktivitäten & Bedingungen | Aktivitäten anlegen, bearbeiten und löschen — mit Temperatur min/max, Niederschlag, Wind max, Zeitfenster, Wochentagen und optionalem eigenem Standort. | Approved | [PROJ-2](PROJ-2-aktivitaeten-bedingungen/) | 2026-08-27 |
-| PROJ-3 | Slot-Vorschläge | Fragt den OpenWeatherMap-Forecast ab, gleicht ihn mit den Bedingungen ab und zeigt pro Aktivität die passenden Zeitfenster der nächsten 5 Tage. | Planned | [PROJ-3](PROJ-3-slot-vorschlaege/) | 2026-08-27 |
+| PROJ-3 | Slot-Vorschläge | Fragt den OpenWeatherMap-Forecast ab, gleicht ihn mit den Bedingungen ab und zeigt pro Aktivität die passenden Zeitfenster der nächsten 5 Tage. | Approved | [PROJ-3](PROJ-3-slot-vorschlaege/) | 2026-08-27 |
 | PROJ-4 | Benachrichtigungen | Meldet aktiv (E-Mail/Push), wenn ein passender Slot auftaucht. | Roadmap | — | 2026-08-27 |
 
 **Build order:** P0 (MVP): PROJ-1 → PROJ-2 (braucht PROJ-1) → PROJ-3 (braucht PROJ-2) · P2: PROJ-4 (braucht PROJ-3)
