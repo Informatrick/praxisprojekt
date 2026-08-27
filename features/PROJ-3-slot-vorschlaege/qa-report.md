@@ -105,6 +105,8 @@
 
 ### Smoke-Test für den Nutzer (macht die offenen Laufzeit-ACs zu)
 
+> **Ergebnis:** vom Nutzer am 2026-08-27 durchgeführt und bestätigt — alle 6 Schritte funktionieren. Damit gelten AC-1, AC-6 (Anzeige), AC-8, AC-9, AC-10 und AC-11 (UI) als `[x] verified by the user, 2026-08-27`.
+
 1. `npm run dev`, einloggen → du landest auf **Vorschläge** (AC-1)
 2. Mit vorhandenen Aktivitäten: pro Aktivität ein Block; Slots zeigen Tag/Zeit + Temperatur/Wind/Regen (AC-1, AC-6)
 3. Eine Aktivität ohne eigenen Ort + Wohnort im Profil leeren → Block zeigt Hinweis mit zwei Links (AC-8)
@@ -117,11 +119,11 @@
 Keine.
 
 ### Summary
-- **Acceptance Criteria:** 9/15 vollständig verifiziert (AC-2–5, AC-7, AC-12–15), 6 in der Logik verifiziert, gerenderter Flow offen (AC-1, AC-6, AC-8–11) → Smoke-Test
+- **Acceptance Criteria:** 15/15 passed — 9 automatisiert/per Probe verifiziert, 6 per bestätigtem Nutzer-Smoke-Test (2026-08-27)
 - **Bugs Found:** 0 (0 critical, 0 high, 0 medium, 0 low)
 - **Security:** 5/7 Checks verifiziert, 2 NOT VERIFIED — Cross-User (kein zweites Konto), Rate-Limit Vorschläge-Seite (bewusst nicht implementiert)
-- **Production Ready:** ausstehend — kein Critical/High-Fund, aber die gerenderten Laufzeit-ACs brauchen den Smoke-Test des Nutzers
-- **Recommendation:** Smoke-Test durchführen; danach Approved
+- **Production Ready:** YES
+- **Recommendation:** Approved; optional `/e2e-tests` für den Kern-Flow, dann `/deploy`
 
 > „Production Ready: YES" heißt *keine Critical/High-Bugs* — nicht, dass alles geprüft wurde.
 > Offene NOT-VERIFIED-Punkte oben brauchen einen Menschen oder `/e2e-tests`.
