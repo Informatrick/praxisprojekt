@@ -43,7 +43,8 @@ Owner: **PROJ-2 (Aktivitäten & Bedingungen)** — das erste Feature, das einen 
 
 | Komponente | Datei | Zweck |
 |------------|-------|-------|
-| AppHeader | `src/components/app-header.tsx` | Logo/App-Name + Konto-Menü; **erstellt von PROJ-1** (ohne Nav-Links), Navigationslinks ergänzt PROJ-2 als Shell-Owner |
+| AppHeader | `src/components/app-header.tsx` | Logo/App-Name + Nav-Links („Vorschläge", „Aktivitäten") + Konto-Menü; erstellt von PROJ-1, Nav-Links ergänzt von PROJ-2 |
+| AppNav | `src/components/app-nav.tsx` | Die zwei Navigationslinks mit Aktiv-Markierung, plus mobiles Burger-Menü (Sheet); erstellt von PROJ-2 |
 | AppFooter | `src/components/app-footer.tsx` | Footer mit Link „Datenschutz" auf jeder Seite (auch ausgeloggt); erstellt von PROJ-1 |
 | LocationSearch | `src/components/location-search.tsx` | Orts-Suchfeld (tippen → Vorschläge → Auswahl); erstellt von PROJ-1, wiederverwendet von PROJ-2 |
 
