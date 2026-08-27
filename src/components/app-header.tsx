@@ -2,6 +2,7 @@
 import { CloudSun } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { AccountMenu } from "@/components/account-menu";
+import { AppNav } from "@/components/app-nav";
 
 // App-Rahmen (docs/app-shell.md): Logo links, Konto-Menü rechts.
 // PROJ-1 liefert den Header ohne Navigationslinks — die ergänzt PROJ-2
@@ -24,14 +25,17 @@ export async function AppHeader() {
 
   return (
     <header className="border-b bg-card">
-      <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4">
-        <Link
-          href="/"
-          className="flex items-center gap-2 rounded-md text-lg font-semibold text-foreground transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-ring"
-        >
-          <CloudSun className="size-6 text-primary" aria-hidden />
-          ActivitySlot
-        </Link>
+      <div className="mx-auto flex h-14 max-w-5xl items-center justify-between gap-2 px-4">
+        <div className="flex items-center gap-2">
+          <Link
+            href="/"
+            className="flex items-center gap-2 rounded-md text-lg font-semibold text-foreground transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-ring"
+          >
+            <CloudSun className="size-6 text-primary" aria-hidden />
+            ActivitySlot
+          </Link>
+          <AppNav />
+        </div>
         <AccountMenu
           email={user.email ?? ""}
           displayName={profile?.display_name ?? null}
