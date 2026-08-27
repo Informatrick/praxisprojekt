@@ -1,4 +1,4 @@
-# PROJ-1 — Tech Design
+﻿# PROJ-1 — Tech Design
 
 > Technisches Design (das WIE) für Benutzerkonten & Login. Zwei Leser: der PM (muss freigeben) und `/build` (setzt dagegen um). Kein Code — aber implementierungsgenau: jedes Feld mit Typ und Regeln, Zugriff und Eigentümerschaft explizit.
 > Owner: `/architecture`. Der Vertrag (WAS) steht in `spec.md`; die Aufgabenliste in `tasks.md`.
@@ -120,3 +120,12 @@ Einstellungen im Supabase-Dashboard des **Dev-Projekts**, die kein Code setzen k
 ## Offene Fragen
 
 - keine
+
+## Implementierungsnotizen (von /build, 2026-08-27)
+
+- **Next 16:** Die Middleware heißt in Next 16 `proxy` — Routenschutz liegt in `src/proxy.ts` (gegen die aktuelle Next-Doku verifiziert), nicht in `middleware.ts`.
+- **Formulare:** Native Formulare mit Server Actions + `useActionState` statt react-hook-form — die Validierung ist ohnehin serverseitig (Zod), react-hook-form hätte nur eine zweite Validierungsschicht dupliziert. HTML-Attribute (`required`, `minLength`) liefern die Sofort-Rückmeldung im Browser.
+- **App-Name:** „ActivitySlot" als Arbeitstitel für Logo/Titel — frei änderbar, nirgends fest verdrahtet außer in Layout/Header/Footer/Metadaten.
+- **Dark Mode:** folgt der Systemeinstellung (next-themes, `attribute="class"`); ein manueller Umschalter ist bewusst kein AC.
+- **Throttle-RPCs** (`login_locked_until`, `record_failed_login`, `clear_login_throttle`) sind mit dem anon key aufrufbar — bewusst: derselbe Effekt ist über das Login-Formular selbst erreichbar, die RPCs öffnen keinen neuen Angriffsweg. Ein absichtliches Aussperren fremder Konten (Lockout-DoS) ist dem Konto-Throttle aus AC-13 inhärent.
+- **Migrationen** sind geschrieben, aber noch nicht angewandt — `supabase link` (T3, Nutzer) steht aus; danach `npx supabase db push`.
