@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useTransition } from "react";
 import { CircleUser, LogOut, UserPen } from "lucide-react";
 import { logout } from "@/app/(auth)/actions";
 import { Button } from "@/components/ui/button";
@@ -20,6 +21,8 @@ export function AccountMenu({
   email: string;
   displayName: string | null;
 }) {
+  const [pending, startTransition] = useTransition();
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -40,14 +43,18 @@ export function AccountMenu({
           </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem asChild>
-          {/* Logout als Server Action (POST) — nie als Link/GET */}
-          <form action={logout} className="w-full">
-            <button type="submit" className="flex w-full items-center gap-2">
-              <LogOut className="size-4" aria-hidden />
-              Abmelden
-            </button>
-          </form>
+        {/* Logout als Server Action (POST). Direkt aus onSelect aufgerufen,
+            nicht als Formular im Menü — ein Formular würde beim Schließen des
+            Radix-Menüs ausgehängt, bevor es abschickt. */}
+        <DropdownMenuItem
+          disabled={pending}
+          onSelect={(e) => {
+            e.preventDefault();
+            startTransition(() => logout());
+          }}
+        >
+          <LogOut className="size-4" aria-hidden />
+          {pending ? "Wird abgemeldet …" : "Abmelden"}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

@@ -103,7 +103,21 @@
 
 ## Gefundene Bugs
 
-Keine Critical-, High-, Medium- oder Low-Bugs in diesem Lauf. Die geprüfte Server-Logik, die Datenbank-Sicherheit (RLS, Rechte), der Routenschutz und der Login-Throttle verhalten sich wie spezifiziert.
+Im automatisierten QA-Lauf: keine. Im anschließenden **menschlichen Smoke-Test** (Nutzer, 2026-08-27, Browser) fielen zwei Bugs auf — beide inzwischen behoben:
+
+### BUG-1: Abmelden funktioniert nicht (User bleibt eingeloggt)
+- **Severity:** High (Kernfunktion AC-6 defekt)
+- **Ursache:** Das Logout-`<form>` lag in einem Radix-`DropdownMenuItem`; beim Klick schließt Radix das Menü und hängt den Formular-Inhalt aus, bevor die Server Action abschickt.
+- **Fix:** Logout wird jetzt direkt aus `onSelect` als Server Action aufgerufen (`startTransition(() => logout())`), bleibt ein POST — `src/components/account-menu.tsx`.
+- **Status:** behoben; Build/Lint grün. Browser-Durchlauf noch durch den Nutzer zu bestätigen (kein Browser in `/qa`).
+
+### BUG-2: Von der Datenschutz-Seite kein Rückweg zur Startseite
+- **Severity:** Medium (Navigation, Workaround „Browser zurück" existierte)
+- **Ursache:** Der Footer-Name „ActivitySlot" war nur ein `<span>`; ausgeloggt gibt es keinen Header, also keinen Link zurück.
+- **Fix:** Footer-Name ist jetzt ein Link auf `/` (auf jeder Seite) — live bestätigt: `/datenschutz` rendert `href="/"` um „ActivitySlot", der alte `<span>` ist weg — `src/components/app-footer.tsx`.
+- **Status:** behoben und live verifiziert.
+
+_AC-6 wird nach dem Logout-Fix mit dem nächsten menschlichen Smoke-Test final grün gesetzt._
 
 ## Zusammenfassung
 - **Acceptance Criteria:** 17/17 in der prüfbaren Ebene (Logik/Sicherheit/Rendering) bestätigt; 10 davon haben zusätzlich einen End-to-End-Anteil (Browser/Postfach), der hier NOT VERIFIED ist
