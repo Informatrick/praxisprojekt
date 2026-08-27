@@ -15,8 +15,9 @@
 | Benutzerkonten betreiben (Registrierung, Login, Profil) | E-Mail-Adresse, Passwort (nur als Hash), optional Anzeigename und Wohnort (Ort + Koordinaten) | Nutzer der App | DSGVO: Vertrag, Art. 6(1)(b) · DSG: entspricht der erwartbaren Bearbeitung (Art. 6 Abs. 3 DSG), keine Rechtfertigung nötig | bis zur Kontolöschung | Supabase (Auth + Datenbank) |
 | Konto-Mails (Bestätigung, Passwort-Reset) | E-Mail-Adresse | Nutzer | DSGVO: Vertrag, Art. 6(1)(b) | nicht gespeichert (Versand) | Supabase (Mailversand) |
 | Missbrauchsschutz (Sperre nach Fehlversuchen, Auth-Logs) | E-Mail-Adresse, IP-Adresse, Zeitstempel | Nutzer und Anfragende | DSGVO: berechtigtes Interesse (Sicherheit), Art. 6(1)(f) | kurzfristig (Log-Retention von Supabase) | Supabase |
+| Aktivitäten verwalten (PROJ-2) | Aktivitätsname (Freitext), Wetterbedingungen, Zeitfenster, Wochentage, optionaler Standort (Name + Koordinaten) | Nutzer, dem sie gehören | DSGVO: Vertrag, Art. 6(1)(b) · DSG: erwartbare Bearbeitung | bis zur Löschung der Aktivität bzw. des Kontos | Supabase |
 
-_Aktivitäten mit Wetterbedingungen (PROJ-2) und Forecast-Abfragen (PROJ-3, OpenWeatherMap) werden ergänzt, wenn diese Features spezifiziert sind._
+_Forecast-Abfragen (PROJ-3, OpenWeatherMap) werden ergänzt, wenn dieses Feature spezifiziert ist._
 
 ## Besonders schützenswerte Daten
 
