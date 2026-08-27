@@ -1,38 +1,35 @@
-# Data Model
+# Datenmodell
 
-> The app-wide map of **what data this product stores and how it connects** — the shared blueprint every feature's tables conform to.
+> Die app-weite Karte, **welche Daten dieses Produkt speichert und wie sie zusammenhängen** — der gemeinsame Bauplan, an dem sich die Tabellen jedes Features ausrichten.
 >
-> - Created by `/init` (the first holistic pass: entities + relationships).
-> - Refined by `/architecture` as each feature is designed.
-> - **Altitude:** entities, relationships, and ownership live here (product-level, anyone can read them). Column types, indexes, and exact foreign keys are decided per feature in that feature's `design.md` — not here.
+> - Erstellt von `/init` (der erste ganzheitliche Blick: Entitäten + Beziehungen).
+> - Verfeinert von `/architecture`, wenn ein Feature im Detail entworfen wird.
+> - **Flughöhe:** Entitäten, Beziehungen und Eigentümerschaft stehen hier (Produkt-Ebene, für alle lesbar). Spaltentypen, Indizes und exakte Fremdschlüssel werden pro Feature in dessen `design.md` entschieden — nicht hier.
 
-## Entities
+## Entitäten
 
-_Each entity is a kind of thing the app stores (a real-world noun). List the ones you know so far with a one-line purpose and who owns or can see it. No column types — just the thing and what it's for._
+| Entität | Was sie darstellt | Gehört wem / wer sieht sie |
+|---------|-------------------|----------------------------|
+| profiles | Das Benutzerkonto mit Anzeigename und Standard-Standort (Wohnort) | dem Nutzer selbst — niemand sonst |
+| activities | Eine Aktivität mit ihren Wetterbedingungen (Temperatur min/max, Niederschlag, Wind max), Zeitfenster, Wochentagen und optional eigenem Standort | dem Nutzer, dem sie gehört |
 
-| Entity | What it represents | Owned by / who can see it |
-|--------|--------------------|---------------------------|
-| _profiles_ | _A user's account profile_ | _the user themselves_ |
-| _..._ | _..._ | _..._ |
+## Beziehungen
 
-## Relationships
+- Ein Profil hat viele Aktivitäten; jede Aktivität gehört zu genau einem Profil.
+- Ein Standort ist Teil des Datensatzes, zu dem er gehört: der Standard-Standort steckt im Profil, ein abweichender Standort direkt in der Aktivität. Kein eigener „Orte"-Katalog — fürs MVP bewusst weggelassen.
 
-_How the entities connect, in plain language. This is where coherence comes from — get the connections right once, up front._
+## Bewusst nicht gespeichert
 
-- _A profile has many ..._
-- _Each ... belongs to exactly one ..._
-- _A ... can have many ..._
+- **Wetterdaten und Slot-Vorschläge:** werden bei Bedarf live von OpenWeatherMap geholt und berechnet, nicht in der Datenbank abgelegt. Ob ein kurzlebiger Zwischenspeicher sinnvoll ist, entscheidet die Architektur von PROJ-3.
+- **Benachrichtigungen (PROJ-4)** erweitern das Modell später um ihre eigenen Daten.
 
-## Diagram (optional)
-
-_A simple text sketch of the model, filled in as it firms up._
+## Diagramm
 
 ```
-profiles
-  └─ owns many ...
-        └─ has many ...
+profiles (Konto + Standard-Standort)
+  └─ hat viele activities (Bedingungen, Zeitfenster, optional eigener Standort)
 ```
 
 ---
 
-_This is a living document. When `/architecture` designs a feature that introduces or changes an entity, it updates this map first, so later features build against an accurate picture. Run `/init` to create the first version from your feature map._
+_Dies ist ein lebendes Dokument. Wenn `/architecture` ein Feature entwirft, das eine Entität einführt oder ändert, wird diese Karte zuerst aktualisiert, damit spätere Features gegen ein korrektes Bild bauen._
